@@ -1,0 +1,146 @@
+    <!-- Footer -->
+    <footer class="bg-bg-color border-t border-border-color text-text-color py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="animate-on-scroll" style="animation-delay: 0.1s">
+                    <h3 class="text-2xl font-display font-bold mb-4">
+                        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Krish</span><span class="text-primary font-light">.Design</span>
+                    </h3>
+                    <p class="mb-6 text-text-secondary">Creating futuristic designs and compelling visual stories that transcend the ordinary.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/gd_tardie" class="w-10 h-10 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center hover:bg-secondary/10 hover:text-secondary transition-colors">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center hover:bg-accent/10 hover:text-accent transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center hover:bg-tertiary-color/10 hover:text-tertiary-color transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" style="animation-delay: 0.2s">
+                    <h3 class="text-xl font-display font-bold mb-6 text-text-color">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-text-secondary hover:text-primary transition-colors flex items-center">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-primary opacity-70"></i> Home
+                        </a></li>
+                        <li><a href="#skills" class="text-text-secondary hover:text-primary transition-colors flex items-center">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-primary opacity-70"></i> Skills
+                        </a></li>
+                        <li><a href="#portfolio" class="text-text-secondary hover:text-primary transition-colors flex items-center">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-primary opacity-70"></i> Portfolio
+                        </a></li>
+                        <li><a href="#about" class="text-text-secondary hover:text-primary transition-colors flex items-center">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-primary opacity-70"></i> About
+                        </a></li>
+                        <li><a href="#contact" class="text-text-secondary hover:text-primary transition-colors flex items-center">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-primary opacity-70"></i> Contact
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div class="animate-on-scroll" style="animation-delay: 0.3s">
+                    <h3 class="text-xl font-display font-bold mb-6 text-text-color">Contact</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-primary text-sm"></i>
+                            </div>
+                            <a href="mailto:thetardie@gmail.com" class="text-text-secondary hover:text-primary transition-colors">thetardie@gmail.com</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-secondary text-sm"></i>
+                            </div>
+                            <span class="text-text-secondary">Nepal</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-instagram text-accent text-sm"></i>
+                            </div>
+                            <a href="https://instagram.com/gd_tardie" class="text-text-secondary hover:text-accent transition-colors">@gd_tardie</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-border-color mt-12 pt-8 text-center text-text-secondary/70 animate-on-scroll" style="animation-delay: 0.4s">
+                <p>&copy; <%= new Date().getFullYear() %> Krish Mandal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Future theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+
+        // This is commented out for future implementation
+        /*
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update icon
+            const icon = themeToggle.querySelector('i');
+            if (newTheme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.setAttribute('data-theme', savedTheme);
+
+            // Update icon
+            const icon = themeToggle.querySelector('i');
+            if (savedTheme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+        */
+
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

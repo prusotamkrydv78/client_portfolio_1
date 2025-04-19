@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#7c3aed',
+                        accent: '#f97316',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Lexend', 'sans-serif']
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            },
+            plugins: [],
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styles -->
+    <style>
+        /* Future theme support */
+        :root {
+            --text-color: #0f172a;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        
+        [data-theme="dark"] {
+            --text-color: #f8fafc;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+        }
+        
+        /* Gradient animations */
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #7c3aed, #f97316);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 8s linear infinite;
+        }
+        
+        @keyframes gradient-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body class="font-sans bg-light text-dark transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-display font-bold gradient-text">Krish<span class="text-primary">.Design</span></a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="#skills" class="font-medium hover:text-primary transition-colors">Skills</a>
+                    <a href="#portfolio" class="font-medium hover:text-primary transition-colors">Portfolio</a>
+                    <a href="#about" class="font-medium hover:text-primary transition-colors">About</a>
+                    <a href="#contact" class="font-medium hover:text-primary transition-colors">Contact</a>
+                </div>
+                
+                <!-- Future theme toggle button -->
+                <button id="theme-toggle" class="hidden p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="#skills" class="font-medium hover:text-primary transition-colors">Skills</a>
+                    <a href="#portfolio" class="font-medium hover:text-primary transition-colors">Portfolio</a>
+                    <a href="#about" class="font-medium hover:text-primary transition-colors">About</a>
+                    <a href="#contact" class="font-medium hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,172 @@
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-24 bg-bg-secondary">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center md:items-start mb-16">
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <div class="sticky top-24">
+          <div class="inline-block px-4 py-1 bg-primary/20 rounded-full text-primary font-medium text-sm mb-4 animate-on-scroll">
+            <span class="flex items-center">
+              <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+              Featured Projects
+            </span>
+          </div>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 animate-on-scroll" style="animation-delay: 0.1s">
+            My <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Portfolio</span>
+          </h2>
+          <p class="text-text-secondary max-w-md mb-8 animate-on-scroll" style="animation-delay: 0.2s">
+            Showcasing my best work across video editing, UX/UI design, and graphic design. Each project represents my commitment to excellence and creativity.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:w-2/3">
+        <!-- Portfolio Filter -->
+        <div class="flex flex-wrap gap-2 mb-10 animate-on-scroll" style="animation-delay: 0.3s">
+          <button class="filter-btn active px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium shadow-button transition-all" data-filter="all">All Work</button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-bg-color border border-border-color text-text-secondary font-medium hover:bg-primary/10 transition-all" data-filter="video">Video Editing</button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-bg-color border border-border-color text-text-secondary font-medium hover:bg-secondary/10 transition-all" data-filter="ux-ui">UX/UI Design</button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-bg-color border border-border-color text-text-secondary font-medium hover:bg-accent/10 transition-all" data-filter="graphic">Graphic Design</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Video Editing Project 1 -->
+          <div class="portfolio-item video animate-on-scroll" style="animation-delay: 0.4s" data-category="video">
+            <div class="bg-bg-color border border-border-color rounded-2xl overflow-hidden group hover-lift">
+              <div class="relative overflow-hidden">
+                <img src="https://placehold.co/800x600/60a5fa/ffffff?text=Cinematic+Trailer" alt="Cinematic Trailer" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg-color/95 via-bg-color/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full bg-bg-secondary/80 backdrop-blur-md border border-border-color text-text-color text-xs font-medium">
+                    <i class="fas fa-film mr-1.5 text-primary"></i>
+                    Video Editing
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-display font-bold mb-2 text-text-color group-hover:text-primary transition-colors">Cinematic Trailer</h3>
+                <p class="text-text-secondary text-sm mb-4">A dramatic cinematic trailer with professional color grading and sound design.</p>
+                <a href="#" class="group inline-flex items-center text-primary font-medium text-sm hover:underline">
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-1.5 text-xs transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Editing Project 2 -->
+          <div class="portfolio-item video animate-on-scroll" style="animation-delay: 0.5s" data-category="video">
+            <div class="bg-bg-color border border-border-color rounded-2xl overflow-hidden group hover-lift">
+              <div class="relative overflow-hidden">
+                <img src="https://placehold.co/800x600/a78bfa/ffffff?text=Motion+Graphics" alt="Motion Graphics Showcase" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg-color/95 via-bg-color/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full bg-bg-secondary/80 backdrop-blur-md border border-border-color text-text-color text-xs font-medium">
+                    <i class="fas fa-film mr-1.5 text-secondary"></i>
+                    Video Editing
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-display font-bold mb-2 text-text-color group-hover:text-secondary transition-colors">Motion Graphics Showcase</h3>
+                <p class="text-text-secondary text-sm mb-4">Dynamic motion graphics and animations for brand promotion.</p>
+                <a href="#" class="group inline-flex items-center text-secondary font-medium text-sm hover:underline">
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-1.5 text-xs transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- UX/UI Design Project 1 -->
+          <div class="portfolio-item ux-ui animate-on-scroll" style="animation-delay: 0.6s" data-category="ux-ui">
+            <div class="bg-bg-color border border-border-color rounded-2xl overflow-hidden group hover-lift">
+              <div class="relative overflow-hidden">
+                <img src="https://placehold.co/800x600/fbbf24/ffffff?text=Mobile+App+UI" alt="Mobile App UI Design" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg-color/95 via-bg-color/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full bg-bg-secondary/80 backdrop-blur-md border border-border-color text-text-color text-xs font-medium">
+                    <i class="fas fa-desktop mr-1.5 text-accent"></i>
+                    UX/UI Design
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-display font-bold mb-2 text-text-color group-hover:text-accent transition-colors">Mobile App UI Design</h3>
+                <p class="text-text-secondary text-sm mb-4">Clean, intuitive mobile app interface with focus on user experience.</p>
+                <a href="#" class="group inline-flex items-center text-accent font-medium text-sm hover:underline">
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-1.5 text-xs transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- UX/UI Design Project 2 -->
+          <div class="portfolio-item ux-ui animate-on-scroll" style="animation-delay: 0.7s" data-category="ux-ui">
+            <div class="bg-bg-color border border-border-color rounded-2xl overflow-hidden group hover-lift">
+              <div class="relative overflow-hidden">
+                <img src="https://placehold.co/800x600/60a5fa/ffffff?text=Website+Redesign" alt="Website Redesign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg-color/95 via-bg-color/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full bg-bg-secondary/80 backdrop-blur-md border border-border-color text-text-color text-xs font-medium">
+                    <i class="fas fa-desktop mr-1.5 text-primary"></i>
+                    UX/UI Design
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-display font-bold mb-2 text-text-color group-hover:text-primary transition-colors">Website Redesign</h3>
+                <p class="text-text-secondary text-sm mb-4">Complete website redesign with improved user flow and modern aesthetics.</p>
+                <a href="#" class="group inline-flex items-center text-primary font-medium text-sm hover:underline">
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-1.5 text-xs transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- View All Projects Button -->
+        <div class="mt-10 text-center animate-on-scroll" style="animation-delay: 0.8s">
+          <a href="#" class="group inline-flex items-center px-8 py-4 bg-bg-color border border-border-color text-text-secondary font-medium rounded-full hover:border-primary hover:text-primary transition-all hover:shadow-glow hover:-translate-y-1">
+            <span>View All Projects</span>
+            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Filter Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(btn => {
+          btn.classList.remove('active', 'bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-button');
+          btn.classList.add('bg-bg-color', 'border', 'border-border-color', 'text-text-secondary');
+        });
+
+        // Add active class to clicked button
+        btn.classList.add('active', 'bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-button');
+        btn.classList.remove('bg-bg-color', 'border', 'border-border-color', 'text-text-secondary');
+
+        const filter = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
