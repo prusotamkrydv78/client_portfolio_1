@@ -56,6 +56,64 @@
   background: var(--secondary-color, #8b5cf6);
 }
 
+/* Custom Cursor Styles */
+body {
+  cursor: default; /* Show the default cursor */
+}
+
+.cursor-circle {
+  pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-dot {
+  pointer-events: none;
+  position: absolute; /* Position relative to the circle */
+  z-index: 10000;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.cursor-circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  background-color: rgba(96, 165, 250, 0.1);
+  transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.1s;
+}
+
+/* Cursor hover effect for interactive elements */
+a:hover ~ .cursor-circle,
+button:hover ~ .cursor-circle,
+.interactive:hover ~ .cursor-circle,
+.skill-card:hover ~ .cursor-circle,
+.hero-buttons a:hover ~ .cursor-circle,
+.social-icon:hover ~ .cursor-circle {
+  width: 60px;
+  height: 60px;
+  border-color: var(--secondary-color);
+  background-color: rgba(167, 139, 250, 0.1);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
 /* Modern card styles */
 .card-modern {
   border-radius: 16px;

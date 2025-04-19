@@ -120,6 +120,9 @@
   </style>
 </head>
 <body class="font-sans bg-dark text-white" data-theme="dark">
+  <!-- Custom cursor elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
   <!-- Header -->
   <header class="fixed w-full z-50 bg-bg-secondary/80 backdrop-blur-md shadow-soft border-b border-border-color">
     <div class="container mx-auto px-6 py-4">
@@ -160,96 +163,687 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center pt-24 pb-16 bg-gradient-to-br from-bg-color via-bg-secondary to-bg-color">
-    <div class="container mx-auto px-6">
-      <!-- Decorative elements -->
-      <div class="absolute top-32 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-10 w-72 h-72 bg-secondary/20 rounded-full blur-3xl"></div>
-      <div class="absolute top-1/2 left-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+  <!-- Three.js and GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
-      <div class="flex flex-col md:flex-row items-center relative z-10">
-        <div class="md:w-1/2 mb-16 md:mb-0">
-          <div class="inline-block px-4 py-1 bg-primary/20 rounded-full text-primary font-medium text-sm mb-6 animate-on-scroll">
-            <span class="flex items-center">
-              <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
-              Web Designer & Video Editor
-            </span>
+  <!-- Futuristic Hero Section with Three.js and GSAP -->
+  <section id="home" class="relative min-h-screen overflow-hidden">
+    <!-- Three.js Canvas -->
+    <div id="hero-canvas" class="absolute inset-0 z-0"></div>
+
+    <!-- Overlay gradient for better text readability -->
+    <div class="absolute inset-0 bg-gradient-to-b from-bg-color/90 via-bg-color/70 to-bg-color/90 z-10"></div>
+
+    <!-- Content Container -->
+    <div class="container relative z-20 mx-auto px-6 h-screen flex flex-col justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <!-- Left Content Column -->
+        <div class="md:col-span-7 md:text-left text-center">
+          <!-- Professional Badge -->
+          <div class="inline-flex items-center px-4 py-2 bg-bg-secondary/40 backdrop-blur-md rounded-full text-primary font-medium text-sm mb-8 hero-badge border border-primary/30 shadow-lg">
+            <span class="w-2 h-2 bg-primary rounded-full mr-2 pulse-dot"></span>
+            <span class="typing-text font-mono">Designer & Video Editor</span>
           </div>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight animate-on-scroll" style="animation-delay: 0.1s">
-            Hi, I'm <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Krish Mandal</span>
+
+          <!-- Main Heading with Refined Typography -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 hero-title tracking-tight">
+            <span class="block text-text-color glitch-text mb-2" data-text="I'm">I'm</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent hero-name">Krish Mandal</span>
           </h1>
-          <h2 class="text-xl md:text-2xl font-display font-medium mb-8 text-text-secondary animate-on-scroll" style="animation-delay: 0.2s">
+
+          <!-- Professional Subtitle -->
+          <p class="text-xl md:text-2xl text-text-secondary mb-10 max-w-xl hero-subtitle leading-relaxed">
             Creating futuristic designs and compelling visual stories that transcend the ordinary.
-          </h2>
-          <div class="flex flex-wrap gap-4 animate-on-scroll" style="animation-delay: 0.3s">
-            <a href="#portfolio" class="group px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-full transition-all shadow-button hover:shadow-glow hover:-translate-y-1">
-              <span class="flex items-center">
+          </p>
+
+          <!-- Interactive Buttons with Professional Design -->
+          <div class="flex md:justify-start justify-center gap-6 mb-12 hero-buttons">
+            <a href="#portfolio" class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-md">
+              <!-- Button background effect -->
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-secondary opacity-90 button-bg"></span>
+              <!-- Glow effect -->
+              <span class="absolute inset-0 w-full h-full bg-primary opacity-0 blur-xl group-hover:opacity-30 transition-opacity duration-300"></span>
+              <!-- Button text -->
+              <span class="relative flex items-center justify-center text-white font-medium">
                 <span>View My Work</span>
-                <i class="fas fa-arrow-right ml-2 text-sm transition-transform group-hover:translate-x-1"></i>
+                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
               </span>
             </a>
-            <a href="#contact" class="group px-8 py-4 bg-bg-secondary border border-border-color text-text-secondary font-medium rounded-full hover:border-primary hover:text-primary transition-all hover:shadow-lg hover:-translate-y-1">
-              <span class="flex items-center">
+
+            <a href="#contact" class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-md">
+              <!-- Button border effect -->
+              <span class="absolute inset-0 w-full h-full border border-primary/50 rounded-md button-border"></span>
+              <!-- Button text -->
+              <span class="relative flex items-center justify-center text-text-secondary group-hover:text-primary transition-colors font-medium">
                 <span>Contact Me</span>
-                <i class="fas fa-envelope ml-2 text-sm transition-transform group-hover:translate-x-1"></i>
+                <i class="fas fa-envelope ml-2 group-hover:translate-x-1 transition-transform"></i>
               </span>
             </a>
           </div>
 
-          <!-- Social links -->
-          <div class="mt-12 flex items-center space-x-4 animate-on-scroll" style="animation-delay: 0.4s">
-            <span class="text-sm font-medium text-text-secondary">Follow me:</span>
-            <a href="https://instagram.com/gd_tardie" class="w-10 h-10 rounded-full flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary/10 transition-colors" target="_blank">
-              <i class="fab fa-instagram"></i>
+          <!-- Social Links with Professional Spacing -->
+          <div class="flex md:justify-start justify-center items-center space-x-5 social-links">
+            <span class="text-sm font-medium text-text-secondary mr-2">Follow me:</span>
+            <a href="https://instagram.com/gd_tardie" class="social-icon" target="_blank">
+              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-primary/20 hover:border-primary/50 transition-colors shadow-md">
+                <i class="fab fa-instagram text-text-secondary hover:text-primary transition-colors"></i>
+              </div>
             </a>
-            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center text-text-secondary hover:text-secondary hover:bg-secondary/10 transition-colors">
-              <i class="fab fa-behance"></i>
+            <a href="#" class="social-icon">
+              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-secondary/20 hover:border-secondary/50 transition-colors shadow-md">
+                <i class="fab fa-behance text-text-secondary hover:text-secondary transition-colors"></i>
+              </div>
             </a>
-            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center text-text-secondary hover:text-accent hover:bg-accent/10 transition-colors">
-              <i class="fab fa-youtube"></i>
+            <a href="#" class="social-icon">
+              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-accent/20 hover:border-accent/50 transition-colors shadow-md">
+                <i class="fab fa-youtube text-text-secondary hover:text-accent transition-colors"></i>
+              </div>
             </a>
           </div>
         </div>
 
-        <div class="md:w-1/2 flex justify-center">
-          <div class="relative animate-on-scroll" style="animation-delay: 0.2s">
-            <!-- Profile image with modern styling -->
-            <div class="relative">
-              <!-- Main image container -->
-              <div class="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden p-2 rotate-3 bg-gradient-to-br from-primary via-secondary to-accent">
-                <div class="w-full h-full rounded-2xl overflow-hidden bg-bg-secondary">
-                  <img src="https://placehold.co/600x600/60a5fa/ffffff?text=KM" alt="Krish Mandal" class="w-full h-full object-cover">
+        <!-- Right Content Column - Skill Showcase -->
+        <div class="md:col-span-5 relative skill-showcase hidden md:block">
+          <!-- Professional Card Container -->
+          <div class="relative bg-bg-secondary/30 backdrop-blur-md rounded-2xl p-6 border border-border-color shadow-xl overflow-hidden">
+            <!-- Glowing background effect -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-3xl blur-xl opacity-50"></div>
+
+            <!-- Skill Cards Grid -->
+            <div class="relative z-10 grid grid-cols-2 gap-4">
+              <!-- Video Editing Card -->
+              <div class="col-span-2 bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-primary/20 hover:border-primary/40 transition-colors group skill-card">
+                <div class="flex items-start space-x-3">
+                  <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+                    <i class="fas fa-video text-xl text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-display font-bold text-text-color mb-1">Video Editing</h3>
+                    <p class="text-text-secondary text-xs">Professional video editing and color grading</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- Floating skill badges -->
-              <div class="absolute -top-6 -left-6 px-5 py-2 bg-bg-secondary rounded-full shadow-soft border border-border-color backdrop-blur-md animate-float" style="animation-delay: 1s">
-                <span class="flex items-center text-sm font-medium">
-                  <i class="fas fa-video text-primary mr-2"></i>
-                  Video Editor
-                </span>
+              <!-- UX/UI Design Card -->
+              <div class="bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-secondary/20 hover:border-secondary/40 transition-colors group skill-card">
+                <div class="flex flex-col h-full">
+                  <div class="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center mb-2 group-hover:bg-secondary/30 transition-colors">
+                    <i class="fas fa-desktop text-lg text-secondary"></i>
+                  </div>
+                  <h3 class="text-sm font-display font-bold text-text-color mb-1">UX/UI Design</h3>
+                  <p class="text-text-secondary text-xs">User-centered interfaces</p>
+                </div>
               </div>
 
-              <div class="absolute top-1/2 -right-8 px-5 py-2 bg-bg-secondary rounded-full shadow-soft border border-border-color backdrop-blur-md animate-float" style="animation-delay: 1.5s">
-                <span class="flex items-center text-sm font-medium">
-                  <i class="fas fa-desktop text-secondary mr-2"></i>
-                  UX/UI Designer
-                </span>
+              <!-- Graphic Design Card -->
+              <div class="bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors group skill-card">
+                <div class="flex flex-col h-full">
+                  <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center mb-2 group-hover:bg-accent/30 transition-colors">
+                    <i class="fas fa-palette text-lg text-accent"></i>
+                  </div>
+                  <h3 class="text-sm font-display font-bold text-text-color mb-1">Graphic Design</h3>
+                  <p class="text-text-secondary text-xs">Visual communication</p>
+                </div>
               </div>
 
-              <div class="absolute -bottom-6 left-12 px-5 py-2 bg-bg-secondary rounded-full shadow-soft border border-border-color backdrop-blur-md animate-float" style="animation-delay: 2s">
-                <span class="flex items-center text-sm font-medium">
-                  <i class="fas fa-palette text-accent mr-2"></i>
-                  Graphic Designer
-                </span>
+              <!-- Web Design Card -->
+              <div class="col-span-2 bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-tertiary-color/20 hover:border-tertiary-color/40 transition-colors group skill-card">
+                <div class="flex items-start space-x-3">
+                  <div class="w-12 h-12 rounded-xl bg-tertiary-color/20 flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary-color/30 transition-colors">
+                    <i class="fas fa-code text-xl text-tertiary-color"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-display font-bold text-text-color mb-1">Web Design</h3>
+                    <p class="text-text-secondary text-xs">Modern, responsive websites with clean aesthetics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Decorative elements -->
+            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full border border-primary/30 flex items-center justify-center animate-spin-slow opacity-50">
+              <div class="w-14 h-14 rounded-full border border-secondary/30 flex items-center justify-center animate-spin-slow-reverse">
+                <div class="w-8 h-8 rounded-full border border-accent/30 animate-pulse"></div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Mobile Skill Icons (visible only on mobile) -->
+        <div class="md:hidden relative h-32 mb-8 skill-icons-container">
+          <!-- Video Editing Icon -->
+          <div class="absolute skill-icon video-icon">
+            <div class="w-16 h-16 rounded-2xl bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/30 shadow-lg">
+              <i class="fas fa-video text-2xl text-primary"></i>
+            </div>
+            <span class="block text-center text-sm mt-2 text-text-secondary">Video Editing</span>
+          </div>
+
+          <!-- UX/UI Design Icon -->
+          <div class="absolute skill-icon ux-icon">
+            <div class="w-16 h-16 rounded-2xl bg-secondary/20 backdrop-blur-md flex items-center justify-center border border-secondary/30 shadow-lg">
+              <i class="fas fa-desktop text-2xl text-secondary"></i>
+            </div>
+            <span class="block text-center text-sm mt-2 text-text-secondary">UX/UI Design</span>
+          </div>
+
+          <!-- Graphic Design Icon -->
+          <div class="absolute skill-icon graphic-icon">
+            <div class="w-16 h-16 rounded-2xl bg-accent/20 backdrop-blur-md flex items-center justify-center border border-accent/30 shadow-lg">
+              <i class="fas fa-palette text-2xl text-accent"></i>
+            </div>
+            <span class="block text-center text-sm mt-2 text-text-secondary">Graphic Design</span>
+          </div>
+
+          <!-- Web Design Icon -->
+          <div class="absolute skill-icon web-icon">
+            <div class="w-16 h-16 rounded-2xl bg-tertiary-color/20 backdrop-blur-md flex items-center justify-center border border-tertiary-color/30 shadow-lg">
+              <i class="fas fa-code text-2xl text-tertiary-color"></i>
+            </div>
+            <span class="block text-center text-sm mt-2 text-text-secondary">Web Design</span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 scroll-indicator">
+      <div class="w-8 h-12 rounded-full border-2 border-text-secondary flex items-center justify-center">
+        <div class="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+      </div>
+      <span class="block text-center text-sm mt-2 text-text-secondary">Scroll Down</span>
+    </div>
   </section>
+
+  <!-- Three.js and GSAP Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Three.js scene
+      const canvas = document.getElementById('hero-canvas');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      canvas.appendChild(renderer.domElement);
+
+      // Camera position
+      camera.position.z = 30;
+
+      // Create starfield effect with tiny star-like particles
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particlesCount = 45000; // Extremely dense starfield (3x more particles)
+
+      const posArray = new Float32Array(particlesCount * 3);
+      const colorsArray = new Float32Array(particlesCount * 3);
+      const sizeArray = new Float32Array(particlesCount);
+
+      // Star colors - mostly white/blue with occasional yellow/red for variety
+      const starColors = [
+        new THREE.Color(0xffffff), // white (most common)
+        new THREE.Color(0xffffff), // white duplicate to increase probability
+        new THREE.Color(0xffffff), // white duplicate to increase probability
+        new THREE.Color(0xd8e8ff), // light blue
+        new THREE.Color(0xd8e8ff), // light blue duplicate
+        new THREE.Color(0xffeedd), // warm white
+        new THREE.Color(0xffd6a5), // yellow/orange (rare)
+        new THREE.Color(0xffb3b3)  // reddish (very rare)
+      ];
+
+      // Create random stars distributed across the sky - more stars for a denser night sky
+      for(let i = 0; i < particlesCount * 3; i += 3) {
+        // Position stars randomly throughout the scene
+        // Use a wider distribution for x and y, but keep z further back
+        posArray[i] = (Math.random() - 0.5) * 200;     // x position (even wider spread)
+        posArray[i+1] = (Math.random() - 0.5) * 200;   // y position (even wider spread)
+        posArray[i+2] = (Math.random() - 0.5) * 150 - 50; // z position (mostly negative/behind)
+
+        // Create a realistic star distribution with slightly larger tiny stars
+        const sizeFactor = Math.random();
+        if (sizeFactor > 0.998) {
+          // Extremely rare "very bright" star (0.2%)
+          sizeArray[i/3] = 0.2 + Math.random() * 0.15; // Increased size
+        } else if (sizeFactor > 0.99) {
+          // Very rare "bright" star (0.8%)
+          sizeArray[i/3] = 0.15 + Math.random() * 0.1; // Increased size
+        } else if (sizeFactor > 0.97) {
+          // Uncommon medium star (2%)
+          sizeArray[i/3] = 0.08 + Math.random() * 0.07; // Increased size
+        } else if (sizeFactor > 0.85) {
+          // Common small star (12%)
+          sizeArray[i/3] = 0.05 + Math.random() * 0.03; // Increased size
+        } else {
+          // Most stars are tiny (85%) - but slightly larger now
+          sizeArray[i/3] = 0.025 + Math.random() * 0.025; // Increased size
+        }
+
+        // Star color - weighted toward white/blue
+        const colorIndex = Math.floor(Math.random() * starColors.length);
+        const color = starColors[colorIndex];
+        colorsArray[i] = color.r;
+        colorsArray[i+1] = color.g;
+        colorsArray[i+2] = color.b;
+      }
+
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+      particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizeArray, 1));
+
+      // Material for stars - optimized for extremely dense starfield
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.3, // Increased base size for better visibility
+        transparent: true,
+        opacity: 1.0, // Full opacity for better visibility
+        vertexColors: true,
+        blending: THREE.AdditiveBlending, // Additive blending for glow effect
+        sizeAttenuation: true, // Stars get smaller with distance
+        map: createStarTexture(), // Custom texture for stars
+        depthWrite: false, // Improves rendering performance with many particles
+        depthTest: false // Further performance optimization for dense starfields
+      });
+
+      // Performance optimization for renderer
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for better performance
+
+      // Create a texture for stars to make them look like actual stars - enhanced for better visibility
+      function createStarTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64; // Larger texture for more detail
+        canvas.height = 64;
+
+        const context = canvas.getContext('2d');
+        const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.9)');
+        gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.6)');
+        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.3)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 64, 64);
+
+        // Add a subtle cross shape for a star-like appearance
+        context.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+        context.lineWidth = 1;
+
+        // Horizontal line
+        context.beginPath();
+        context.moveTo(16, 32);
+        context.lineTo(48, 32);
+        context.stroke();
+
+        // Vertical line
+        context.beginPath();
+        context.moveTo(32, 16);
+        context.lineTo(32, 48);
+        context.stroke();
+
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        return texture;
+      }
+
+      // Mesh
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+
+      // We're removing the large colored circles/nebulae to create a cleaner night sky effect
+
+      // Create a few very subtle, small glowing areas to add depth
+      const createStarCluster = () => {
+        // Create a small, very subtle glow for star clusters
+        const geometry = new THREE.BufferGeometry();
+        const clusterCount = 10; // Number of subtle clusters
+
+        const positions = new Float32Array(clusterCount * 3);
+        const colors = new Float32Array(clusterCount * 3);
+        const sizes = new Float32Array(clusterCount);
+
+        for(let i = 0; i < clusterCount; i++) {
+          // Position clusters randomly but further back
+          positions[i*3] = (Math.random() - 0.5) * 100;
+          positions[i*3+1] = (Math.random() - 0.5) * 100;
+          positions[i*3+2] = -50 - Math.random() * 50; // Always behind
+
+          // Very subtle blue/white colors
+          const shade = 0.5 + Math.random() * 0.5; // Value between 0.5 and 1
+          colors[i*3] = shade;
+          colors[i*3+1] = shade;
+          colors[i*3+2] = shade + Math.random() * 0.2; // Slightly more blue
+
+          // Larger but very transparent
+          sizes[i] = 5 + Math.random() * 5;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+        const material = new THREE.PointsMaterial({
+          size: 15,
+          transparent: true,
+          opacity: 0.05,
+          vertexColors: true,
+          blending: THREE.AdditiveBlending,
+          sizeAttenuation: true,
+          map: createStarTexture()
+        });
+
+        const clusters = new THREE.Points(geometry, material);
+        scene.add(clusters);
+      };
+
+      // Add a few subtle star clusters
+      createStarCluster();
+
+      // Animation
+      const clock = new THREE.Clock();
+
+      // Create arrays to track star twinkling
+      const twinkleSpeed = new Float32Array(particlesCount);
+      const twinklePhase = new Float32Array(particlesCount);
+
+      // Create arrays to track original positions for cursor interaction
+      const originalPositions = new Float32Array(particlesCount * 3);
+
+      // Copy original positions for reference
+      for(let i = 0; i < particlesCount * 3; i++) {
+        originalPositions[i] = posArray[i];
+      }
+
+      // Initialize twinkling parameters
+      for(let i = 0; i < particlesCount; i++) {
+        // Random speed for each star
+        twinkleSpeed[i] = 0.3 + Math.random() * 2;
+        // Random starting phase
+        twinklePhase[i] = Math.random() * Math.PI * 2;
+      }
+
+      // Variables for cursor interaction
+      // We'll use the existing mouseX and mouseY variables
+      let mouseRadius = 80; // Radius of influence around cursor - smaller for more precise interaction
+      let mouseScreenX = 0; // Mouse position in screen coordinates
+      let mouseScreenY = 0;
+
+      const animate = () => {
+        const elapsedTime = clock.getElapsedTime();
+
+        // Subtle twinkling effect for stars
+        const sizes = particlesGeometry.attributes.size.array;
+        const positions = particlesGeometry.attributes.position.array;
+
+        // Convert mouse position from screen to normalized device coordinates (-1 to +1)
+        const mouseNDCX = (mouseScreenX / window.innerWidth) * 2 - 1;
+        const mouseNDCY = -(mouseScreenY / window.innerHeight) * 2 + 1;
+
+        // Convert to world coordinates (improved approximation)
+        // Use camera FOV and distance to calculate better world coordinates
+        const fovRadians = camera.fov * (Math.PI / 180);
+        const screenHeight = 2 * Math.tan(fovRadians / 2) * camera.position.z;
+        const screenWidth = screenHeight * camera.aspect;
+
+        const worldX = mouseNDCX * (screenWidth / 2);
+        const worldY = mouseNDCY * (screenHeight / 2);
+
+        // Twinkling effect for brighter stars
+        for(let i = 0; i < particlesCount; i++) {
+          // Only make some stars twinkle (the brighter ones)
+          if(sizes[i] > 0.08) { // Increased threshold to match our larger star sizes
+            // Calculate twinkling factor using sine wave
+            const twinkleFactor = Math.sin(elapsedTime * twinkleSpeed[i] + twinklePhase[i]);
+
+            // Apply subtle size variation for twinkling
+            const originalSize = sizeArray[i];
+            sizes[i] = originalSize * (0.8 + 0.2 * twinkleFactor);
+          }
+        }
+
+        // Cursor interaction with ALL particles
+        // Process every particle for a more consistent effect
+        for(let i = 0; i < particlesCount * 3; i += 3) {
+          // Get original position
+          const origX = originalPositions[i];
+          const origY = originalPositions[i+1];
+          const origZ = originalPositions[i+2];
+
+          // Calculate distance from cursor in world space
+          const dx = origX - worldX;
+          const dy = origY - worldY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          // If within influence radius, move particles away from cursor
+          if (distance < mouseRadius) {
+            // Calculate repulsion factor (stronger when closer)
+            const repulsionFactor = 1 - distance / mouseRadius;
+            const repulsionStrength = 3; // Slightly reduced strength for smoother effect
+
+            // Apply repulsion
+            positions[i] = origX + (dx / distance) * repulsionFactor * repulsionStrength;
+            positions[i+1] = origY + (dy / distance) * repulsionFactor * repulsionStrength;
+          } else {
+            // Gradually return to original position when outside influence
+            const returnSpeed = 0.05;
+            positions[i] += (origX - positions[i]) * returnSpeed;
+            positions[i+1] += (origY - positions[i+1]) * returnSpeed;
+          }
+        }
+
+        // Update the attributes
+        particlesGeometry.attributes.size.needsUpdate = true;
+        particlesGeometry.attributes.position.needsUpdate = true;
+
+        // No rotation - stars are static except for cursor interaction
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      };
+
+      // Mouse movement effect
+      let mouseX = 0;
+      let mouseY = 0;
+
+      document.addEventListener('mousemove', (event) => {
+        // Track mouse position for Three.js scene interaction
+        mouseScreenX = event.clientX;
+        mouseScreenY = event.clientY;
+
+        // Also track normalized position for other effects
+        mouseX = event.clientX - window.innerWidth / 2;
+        mouseY = event.clientY - window.innerHeight / 2;
+      });
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // Start animation
+      animate();
+
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Initial animations
+      const tl = gsap.timeline();
+
+      // Left column animations
+      tl.from('.hero-badge', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' })
+        .from('.hero-title', { opacity: 0, y: 30, duration: 1, ease: 'power3.out' }, '-=0.4')
+        .from('.hero-name', { opacity: 0, y: 30, duration: 1, ease: 'power3.out' }, '-=0.8')
+        .from('.hero-subtitle', { opacity: 0, y: 30, duration: 1, ease: 'power3.out' }, '-=0.8')
+        .from('.hero-buttons', { opacity: 0, y: 30, duration: 1, ease: 'power3.out' }, '-=0.8')
+        .from('.social-links', { opacity: 0, y: 30, duration: 1, ease: 'power3.out' }, '-=0.6')
+
+        // Right column animations
+        .from('.skill-showcase', {
+          opacity: 0,
+          x: 50,
+          duration: 1,
+          ease: 'power3.out'
+        }, '-=1.2')
+        .from('.skill-card', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out'
+        }, '-=0.8')
+
+        // Mobile skill icons
+        .from('.skill-icon', {
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out'
+        }, '-=1')
+
+        // Scroll indicator
+        .from('.scroll-indicator', { opacity: 0, y: -20, duration: 1, ease: 'power3.out' }, '-=0.6');
+
+      // Floating animation for skill icons
+      gsap.to('.video-icon', {
+        y: '-=20',
+        x: '-=10',
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('.ux-icon', {
+        y: '-=15',
+        x: '+=15',
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 0.5
+      });
+
+      gsap.to('.graphic-icon', {
+        y: '-=25',
+        x: '-=5',
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 0.2
+      });
+
+      gsap.to('.web-icon', {
+        y: '-=10',
+        x: '+=20',
+        duration: 2.2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 0.7
+      });
+
+      // Button hover effects
+      const buttons = document.querySelectorAll('.hero-buttons a');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          gsap.to(button, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+
+        button.addEventListener('mouseleave', () => {
+          gsap.to(button, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+      });
+
+      // Glitch effect for text
+      const glitchText = document.querySelector('.glitch-text');
+      const glitchInterval = setInterval(() => {
+        gsap.to(glitchText, {
+          skewX: 20,
+          duration: 0.1,
+          onComplete: () => {
+            gsap.to(glitchText, {
+              skewX: 0,
+              duration: 0.1
+            });
+          }
+        });
+
+        // Random opacity flicker
+        gsap.to(glitchText, {
+          opacity: 0.8,
+          duration: 0.05,
+          onComplete: () => {
+            gsap.to(glitchText, {
+              opacity: 1,
+              duration: 0.05
+            });
+          }
+        });
+      }, 3000);
+
+      // Position skill icons initially (for mobile)
+      gsap.set('.video-icon', { left: '15%', top: '10%' });
+      gsap.set('.ux-icon', { left: '35%', top: '60%' });
+      gsap.set('.graphic-icon', { right: '35%', top: '15%' });
+      gsap.set('.web-icon', { right: '15%', top: '55%' });
+
+      // Add hover animations for skill cards
+      const skillCards = document.querySelectorAll('.skill-card');
+      skillCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            y: -5,
+            boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            y: 0,
+            boxShadow: '0 0 0 rgba(0,0,0,0)',
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+      });
+
+      // Pulse animation for the dot
+      gsap.to('.pulse-dot', {
+        scale: 1.5,
+        opacity: 0.5,
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      // Scroll trigger for parallax effect
+      gsap.to('#hero-canvas', {
+        scrollTrigger: {
+          trigger: '#home',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        },
+        y: 200,
+        opacity: 0.5
+      });
+    });
+  </script>
 
   <!-- Include all sections -->
   <%- include('partials/skills') %>
