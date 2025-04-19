@@ -58,60 +58,116 @@
 
 /* Custom Cursor Styles */
 body {
-  cursor: default; /* Show the default cursor */
+    /* Hide the default cursor */
 }
 
-.cursor-circle {
-  pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
+/* Container for all cursor elements */
+.cursor-container {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
+  pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.1s ease-out;
+  will-change: transform; /* Optimize for animations */
 }
 
+/* Small center dot */
 .cursor-dot {
-  pointer-events: none;
-  position: absolute; /* Position relative to the circle */
-  z-index: 10000;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
   background-color: var(--primary-color);
   box-shadow: 0 0 10px var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
 }
 
+/* Middle circle */
 .cursor-circle {
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--primary-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--primary-color);
   background-color: rgba(96, 165, 250, 0.1);
-  transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.1s;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: pulse 2s infinite;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
 }
 
-/* Cursor hover effect for interactive elements */
-a:hover ~ .cursor-circle,
-button:hover ~ .cursor-circle,
-.interactive:hover ~ .cursor-circle,
-.skill-card:hover ~ .cursor-circle,
-.hero-buttons a:hover ~ .cursor-circle,
-.social-icon:hover ~ .cursor-circle {
+/* Outer circle */
+.cursor-circle-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 60px;
   height: 60px;
+  border: 1px solid var(--primary-color);
+  background-color: rgba(96, 165, 250, 0.05);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: pulse-reverse 3s infinite;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-reverse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Hover states will be handled in JavaScript */
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: var(--secondary-color);
+}
+
+.cursor-circle.hover {
+  width: 40px;
+  height: 40px;
   border-color: var(--secondary-color);
   background-color: rgba(167, 139, 250, 0.1);
-  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.cursor-circle-outer.hover {
+  width: 70px;
+  height: 70px;
+  border-color: var(--secondary-color);
+  background-color: rgba(167, 139, 250, 0.05);
 }
 
 /* Modern card styles */

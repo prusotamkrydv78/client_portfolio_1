@@ -121,8 +121,11 @@
 </head>
 <body class="font-sans bg-dark text-white" data-theme="dark">
   <!-- Custom cursor elements -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-circle"></div>
+  <div class="cursor-container">
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    <div class="cursor-circle-outer"></div>
+  </div>
   <!-- Header -->
   <header class="fixed w-full z-50 bg-bg-secondary/80 backdrop-blur-md shadow-soft border-b border-border-color">
     <div class="container mx-auto px-6 py-4">
@@ -564,9 +567,14 @@
 
       // Variables for cursor interaction
       // We'll use the existing mouseX and mouseY variables
-      let mouseRadius = 80; // Radius of influence around cursor - smaller for more precise interaction
+      let mouseRadius = 100; // Radius of influence around cursor
       let mouseScreenX = 0; // Mouse position in screen coordinates
       let mouseScreenY = 0;
+      let isMouseDown = false; // Track mouse button state
+      let interactionMode = 3; // Default to Wave mode (3) instead of Repel (0)
+      let lastInteractionSwitch = 0; // Time tracking for auto mode switching
+      let waveTime = 0; // Time variable for wave effect
+      let autoSwitchEnabled = false; // Disable auto-switching by default
 
       const animate = () => {
         const elapsedTime = clock.getElapsedTime();
@@ -601,6 +609,18 @@
           }
         }
 
+        // Only auto-switch if explicitly enabled
+        if (autoSwitchEnabled && elapsedTime - lastInteractionSwitch > 5) { // Switch every 5 seconds
+          // Only auto-switch if not manually changed recently
+          if (!isMouseDown) {
+            interactionMode = (interactionMode + 1) % 4; // Cycle through modes
+            lastInteractionSwitch = elapsedTime;
+          }
+        }
+
+        // Update wave time for wave effect
+        waveTime += 0.05;
+
         // Cursor interaction with ALL particles
         // Process every particle for a more consistent effect
         for(let i = 0; i < particlesCount * 3; i += 3) {
@@ -614,15 +634,42 @@
           const dy = origY - worldY;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          // If within influence radius, move particles away from cursor
+          // If within influence radius, apply the current interaction mode
           if (distance < mouseRadius) {
-            // Calculate repulsion factor (stronger when closer)
-            const repulsionFactor = 1 - distance / mouseRadius;
-            const repulsionStrength = 3; // Slightly reduced strength for smoother effect
+            // Calculate interaction factor (stronger when closer)
+            const factor = 1 - distance / mouseRadius;
 
-            // Apply repulsion
-            positions[i] = origX + (dx / distance) * repulsionFactor * repulsionStrength;
-            positions[i+1] = origY + (dy / distance) * repulsionFactor * repulsionStrength;
+            // Different interaction modes
+            switch(interactionMode) {
+              case 0: // Repel mode - particles move away from cursor
+                const repelStrength = 4;
+                positions[i] = origX + (dx / distance) * factor * repelStrength;
+                positions[i+1] = origY + (dy / distance) * factor * repelStrength;
+                break;
+
+              case 1: // Attract mode - particles move toward cursor
+                const attractStrength = 2;
+                positions[i] = origX - (dx / distance) * factor * attractStrength;
+                positions[i+1] = origY - (dy / distance) * factor * attractStrength;
+                break;
+
+              case 2: // Vortex mode - particles swirl around cursor
+                const vortexStrength = 3;
+                const angle = Math.atan2(dy, dx) + factor * 0.2; // Rotation angle
+                const newDist = distance * (0.8 + 0.2 * factor); // Slightly pull inward
+                positions[i] = worldX + Math.cos(angle) * newDist;
+                positions[i+1] = worldY + Math.sin(angle) * newDist;
+                break;
+
+              case 3: // Wave mode - particles form waves radiating from cursor
+                const waveStrength = 2;
+                const waveFreq = 0.2;
+                const wavePhase = distance * waveFreq - waveTime;
+                const waveFactor = Math.sin(wavePhase) * factor * waveStrength;
+                positions[i] = origX + (dx / distance) * waveFactor;
+                positions[i+1] = origY + (dy / distance) * waveFactor;
+                break;
+            }
           } else {
             // Gradually return to original position when outside influence
             const returnSpeed = 0.05;
@@ -654,6 +701,59 @@
         mouseX = event.clientX - window.innerWidth / 2;
         mouseY = event.clientY - window.innerHeight / 2;
       });
+
+      // Mouse click events for interaction mode switching
+      document.addEventListener('mousedown', () => {
+        isMouseDown = true;
+      });
+
+      document.addEventListener('click', () => {
+        // Change interaction mode only on click (not just mousedown)
+        interactionMode = (interactionMode + 1) % 4;
+        lastInteractionSwitch = clock.getElapsedTime();
+
+        // Update the mode indicator text immediately
+        const modeIndicator = document.querySelector('div[style*="position: fixed"][style*="bottom: 20px"]');
+        if (modeIndicator) {
+          const modes = ['Repel', 'Attract', 'Vortex', 'Wave'];
+          modeIndicator.textContent = `Mode: ${modes[interactionMode]} (click to change)`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isMouseDown = false;
+      });
+
+      // Keyboard controls for interaction modes
+      document.addEventListener('keydown', (event) => {
+        // Number keys 1-4 to select modes
+        if (event.key >= '1' && event.key <= '4') {
+          interactionMode = parseInt(event.key) - 1;
+          lastInteractionSwitch = clock.getElapsedTime();
+        }
+      });
+
+      // Add visual indicator for current mode
+      const modeIndicator = document.createElement('div');
+      modeIndicator.style.position = 'fixed';
+      modeIndicator.style.bottom = '20px';
+      modeIndicator.style.right = '20px';
+      modeIndicator.style.padding = '10px';
+      modeIndicator.style.background = 'rgba(0,0,0,0.5)';
+      modeIndicator.style.color = 'white';
+      modeIndicator.style.borderRadius = '5px';
+      modeIndicator.style.fontFamily = 'sans-serif';
+      modeIndicator.style.fontSize = '14px';
+      modeIndicator.style.zIndex = '1000';
+      modeIndicator.style.pointerEvents = 'none'; // Don't interfere with clicks
+      document.body.appendChild(modeIndicator);
+
+      // Set initial mode indicator text to Wave (mode 3)
+      const modes = ['Repel', 'Attract', 'Vortex', 'Wave'];
+      modeIndicator.textContent = `Mode: ${modes[interactionMode]} (click to change)`;
+
+      // No need to update constantly since we're not auto-switching
+      // Only update on click (handled in click event)
 
       // Handle window resize
       window.addEventListener('resize', () => {
