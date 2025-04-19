@@ -57,8 +57,7 @@
 }
 
 /* Custom Cursor Styles */
-body {
-    /* Hide the default cursor */
+body { /* Hide the default cursor */
 }
 
 /* Container for all cursor elements */
@@ -150,7 +149,7 @@ body {
   }
 }
 
-/* Hover states will be handled in JavaScript */
+/* Hover states for different elements */
 .cursor-dot.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background-color: var(--secondary-color);
@@ -168,6 +167,29 @@ body {
   height: 70px;
   border-color: var(--secondary-color);
   background-color: rgba(167, 139, 250, 0.05);
+}
+
+/* Special hover effects for hero section elements */
+.cursor-dot.hero-hover {
+  transform: translate(-50%, -50%) scale(2);
+  background-color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.cursor-circle.hero-hover {
+  width: 50px;
+  height: 50px;
+  border-color: var(--primary-color);
+  background-color: rgba(96, 165, 250, 0.15);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.cursor-circle-outer.hero-hover {
+  width: 80px;
+  height: 80px;
+  border-color: var(--primary-color);
+  background-color: rgba(96, 165, 250, 0.05);
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 /* Modern card styles */

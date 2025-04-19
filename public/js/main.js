@@ -154,6 +154,29 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
+    // Add special hover effect for hero section elements
+    const heroElements = document.querySelectorAll('.hero-badge, .hero-title, .hero-subtitle, .hero-buttons a, .social-icon, .skill-showcase .skill-card');
+    heroElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        // Remove regular hover class if present
+        cursorDot.classList.remove('hover');
+        cursorCircle.classList.remove('hover');
+        cursorCircleOuter.classList.remove('hover');
+
+        // Add hero-specific hover class
+        cursorDot.classList.add('hero-hover');
+        cursorCircle.classList.add('hero-hover');
+        cursorCircleOuter.classList.add('hero-hover');
+      });
+
+      el.addEventListener('mouseleave', () => {
+        // Remove hero-specific hover class
+        cursorDot.classList.remove('hero-hover');
+        cursorCircle.classList.remove('hero-hover');
+        cursorCircleOuter.classList.remove('hero-hover');
+      });
+    });
+
     // Update cursor appearance based on interaction mode
     let currentMode = 0;
     setInterval(() => {
