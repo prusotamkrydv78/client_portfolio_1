@@ -6,10 +6,18 @@
   <title><%= title %></title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom Tailwind Configuration -->
+  <!-- Custom Tailwind Configuration with Extra Small Breakpoint -->
   <script>
     tailwind.config = {
       theme: {
+        screens: {
+          'xs': '375px',  // Extra small devices (phones, 375px and up)
+          'sm': '640px',  // Small devices (tablets, 640px and up)
+          'md': '768px',  // Medium devices (tablets, 768px and up)
+          'lg': '1024px', // Large devices (desktops, 1024px and up)
+          'xl': '1280px', // Extra large devices (large desktops, 1280px and up)
+          '2xl': '1536px' // 2X large devices (larger desktops, 1536px and up)
+        },
         extend: {
           colors: {
             primary: '#2563eb',    // More refined blue
@@ -126,20 +134,20 @@
     <div class="cursor-circle"></div>
     <div class="cursor-circle-outer"></div>
   </div>
-  <!-- Header -->
+  <!-- Header - Fully Responsive for All Devices -->
   <header class="fixed w-full z-50 bg-bg-secondary/80 backdrop-blur-md shadow-soft border-b border-border-color">
-    <div class="container mx-auto px-6 py-4">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4">
       <div class="flex justify-between items-center">
-        <a href="#" class="text-2xl font-display font-bold">
+        <a href="#" class="text-xl xs:text-xl sm:text-2xl font-display font-bold">
           <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Krish</span><span class="text-primary font-light">.Design</span>
         </a>
 
         <nav class="hidden md:flex items-center space-x-1">
-          <a href="#home" class="px-4 py-2 font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Home</a>
-          <a href="#skills" class="px-4 py-2 font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Skills</a>
-          <a href="#portfolio" class="px-4 py-2 font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Portfolio</a>
-          <a href="#about" class="px-4 py-2 font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">About</a>
-          <a href="#contact" class="ml-2 px-5 py-2 font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all rounded-full shadow-button hover:shadow-glow">
+          <a href="#home" class="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Home</a>
+          <a href="#skills" class="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Skills</a>
+          <a href="#portfolio" class="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">Portfolio</a>
+          <a href="#about" class="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-primary/10">About</a>
+          <a href="#contact" class="ml-1 lg:ml-2 px-4 lg:px-5 py-2 text-sm lg:text-base font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all rounded-full shadow-button hover:shadow-glow">
             <span class="flex items-center">
               <span>Contact</span>
               <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
@@ -148,19 +156,19 @@
         </nav>
 
         <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-bg-secondary transition-colors">
-          <i class="fas fa-bars text-text-secondary text-xl"></i>
+        <button id="mobile-menu-button" class="md:hidden p-1.5 sm:p-2 rounded-full hover:bg-bg-secondary transition-colors">
+          <i class="fas fa-bars text-text-secondary text-lg sm:text-xl"></i>
         </button>
       </div>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 rounded-2xl bg-bg-secondary/95 backdrop-blur-md shadow-soft p-4 absolute left-4 right-4 top-16 border border-border-color">
-        <div class="flex flex-col space-y-2">
-          <a href="#home" class="px-4 py-3 font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Home</a>
-          <a href="#skills" class="px-4 py-3 font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Skills</a>
-          <a href="#portfolio" class="px-4 py-3 font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Portfolio</a>
-          <a href="#about" class="px-4 py-3 font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">About</a>
-          <a href="#contact" class="px-4 py-3 font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Contact</a>
+      <div id="mobile-menu" class="md:hidden hidden mt-3 pb-2 rounded-xl sm:rounded-2xl bg-bg-secondary/95 backdrop-blur-md shadow-soft p-3 sm:p-4 absolute left-3 right-3 sm:left-4 sm:right-4 top-12 sm:top-14 md:top-16 border border-border-color z-50">
+        <div class="flex flex-col space-y-1 sm:space-y-2">
+          <a href="#home" class="px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Home</a>
+          <a href="#skills" class="px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Skills</a>
+          <a href="#portfolio" class="px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Portfolio</a>
+          <a href="#about" class="px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">About</a>
+          <a href="#contact" class="px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors hover:bg-primary/10 rounded-lg">Contact</a>
         </div>
       </div>
     </div>
@@ -179,190 +187,504 @@
     <!-- Overlay gradient for better text readability -->
     <div class="absolute inset-0 bg-gradient-to-b from-bg-color/90 via-bg-color/70 to-bg-color/90 z-10"></div>
 
-    <!-- Content Container -->
-    <div class="container relative z-20 mx-auto px-6 h-screen flex flex-col justify-center">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <!-- Content Container - Fully Responsive -->
+    <div class="container relative z-20 mx-auto px-3 xs:px-4 sm:px-6 h-screen flex flex-col justify-center">
+      <!-- Mobile Hero Badge (Only visible on mobile) -->
+      <div class="md:hidden flex justify-center mb-6">
+        <div class="inline-flex items-center px-3 py-1.5 bg-bg-secondary/90 backdrop-blur-md rounded-full text-primary font-medium text-xs mb-2 hero-badge-mobile border border-primary/60 shadow-lg relative z-30">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 pulse-dot"></span>
+          <span class="typing-text font-mono">Designer & Video Editor</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
         <!-- Left Content Column -->
         <div class="md:col-span-7 md:text-left text-center">
-          <!-- Professional Badge -->
-          <div class="inline-flex items-center px-4 py-2 bg-bg-secondary/40 backdrop-blur-md rounded-full text-primary font-medium text-sm mb-8 hero-badge border border-primary/30 shadow-lg">
-            <span class="w-2 h-2 bg-primary rounded-full mr-2 pulse-dot"></span>
+          <!-- Professional Badge - Responsive (Hidden on mobile, shown on larger screens) -->
+          <div class="hidden md:inline-flex items-center px-3 xs:px-3 sm:px-4 py-1.5 xs:py-1.5 sm:py-2 bg-bg-secondary/80 backdrop-blur-md rounded-full text-primary font-medium text-xs xs:text-xs sm:text-sm mb-4 xs:mb-6 sm:mb-8 hero-badge border border-primary/50 shadow-lg relative z-30">
+            <span class="w-1.5 xs:w-1.5 sm:w-2 h-1.5 xs:h-1.5 sm:h-2 bg-primary rounded-full mr-1.5 xs:mr-1.5 sm:mr-2 pulse-dot"></span>
             <span class="typing-text font-mono">Designer & Video Editor</span>
           </div>
 
-          <!-- Main Heading with Refined Typography -->
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 hero-title tracking-tight">
-            <span class="block text-text-color glitch-text mb-2" data-text="I'm">I'm</span>
+          <!-- Main Heading with Responsive Typography -->
+          <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 xs:mb-5 sm:mb-6 hero-title tracking-tight">
+            <span class="block text-text-color glitch-text mb-1 xs:mb-1 sm:mb-2" data-text="I'm">I'm</span>
             <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent hero-name">Krish Mandal</span>
           </h1>
 
-          <!-- Professional Subtitle -->
-          <p class="text-xl md:text-2xl text-text-secondary mb-10 max-w-xl hero-subtitle leading-relaxed">
+          <!-- Professional Subtitle - Responsive for All Devices -->
+          <p class="text-base xs:text-lg sm:text-xl md:text-2xl text-text-secondary mb-6 xs:mb-8 sm:mb-10 max-w-xl hero-subtitle leading-relaxed">
             Creating futuristic designs and compelling visual stories that transcend the ordinary.
           </p>
 
-          <!-- Interactive Buttons with Professional Design -->
-          <div class="flex md:justify-start justify-center gap-6 mb-12 hero-buttons">
-            <a href="#portfolio" class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-md">
-              <!-- Button background effect -->
-              <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-secondary opacity-90 button-bg"></span>
-              <!-- Glow effect -->
-              <span class="absolute inset-0 w-full h-full bg-primary opacity-0 blur-xl group-hover:opacity-30 transition-opacity duration-300"></span>
-              <!-- Button text -->
-              <span class="relative flex items-center justify-center text-white font-medium">
-                <span>View My Work</span>
-                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+          <!-- Interactive Buttons with Enhanced Hover Effects - Responsive for All Devices -->
+          <div class="flex md:justify-start justify-center gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 sm:mb-10 hero-buttons">
+            <a href="#portfolio" class="group relative px-4 xs:px-6 sm:px-8 py-2 xs:py-3 sm:py-4 bg-transparent overflow-hidden rounded-md transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 w-full max-w-[160px] xs:max-w-[180px] sm:max-w-none">
+              <!-- Button background effect with animated gradient -->
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-secondary opacity-90 button-bg group-hover:bg-gradient-to-r group-hover:from-primary/90 group-hover:via-secondary/90 group-hover:to-primary/90 transition-all duration-700 bg-size-200 group-hover:bg-pos-100"></span>
+              <!-- Enhanced glow effect -->
+              <span class="absolute inset-0 w-full h-full bg-primary opacity-0 blur-xl group-hover:opacity-40 transition-all duration-500"></span>
+              <!-- Animated particles on hover -->
+              <span class="particle-1 absolute w-1 xs:w-1.5 sm:w-2 h-1 xs:h-1.5 sm:h-2 rounded-full bg-white/80 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></span>
+              <span class="particle-2 absolute w-0.5 xs:w-0.5 sm:w-1 h-0.5 xs:h-0.5 sm:h-1 rounded-full bg-white/80 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></span>
+              <span class="particle-3 absolute w-1 xs:w-1 sm:w-1.5 h-1 xs:h-1 sm:h-1.5 rounded-full bg-white/80 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></span>
+              <!-- Button text with enhanced animation -->
+              <span class="relative flex items-center justify-center text-white font-medium text-sm xs:text-base sm:text-base whitespace-nowrap">
+                <span class="group-hover:tracking-wider transition-all duration-500">View My Work</span>
+                <i class="fas fa-arrow-right ml-1 xs:ml-1.5 sm:ml-2 text-xs group-hover:translate-x-1 xs:group-hover:translate-x-1.5 sm:group-hover:translate-x-2 transition-all duration-500 ease-out"></i>
               </span>
             </a>
 
-            <a href="#contact" class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-md">
-              <!-- Button border effect -->
-              <span class="absolute inset-0 w-full h-full border border-primary/50 rounded-md button-border"></span>
-              <!-- Button text -->
-              <span class="relative flex items-center justify-center text-text-secondary group-hover:text-primary transition-colors font-medium">
-                <span>Contact Me</span>
-                <i class="fas fa-envelope ml-2 group-hover:translate-x-1 transition-transform"></i>
+            <a href="#contact" class="group relative px-4 xs:px-6 sm:px-8 py-2 xs:py-3 sm:py-4 bg-transparent overflow-hidden rounded-md transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 w-full max-w-[160px] xs:max-w-[180px] sm:max-w-none">
+              <!-- Button border effect with animated gradient -->
+              <span class="absolute inset-0 w-full h-full border border-primary/50 rounded-md button-border group-hover:border-opacity-0 transition-all duration-500"></span>
+              <!-- Animated background on hover -->
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+              <!-- Animated glow line at bottom -->
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-700 ease-out"></span>
+              <!-- Button text with enhanced animation -->
+              <span class="relative flex items-center justify-center text-text-secondary group-hover:text-primary transition-all duration-500 font-medium text-sm xs:text-base sm:text-base whitespace-nowrap">
+                <span class="group-hover:tracking-wider transition-all duration-500">Contact Me</span>
+                <i class="fas fa-envelope ml-1 xs:ml-1.5 sm:ml-2 text-xs group-hover:translate-x-1 xs:group-hover:translate-x-1.5 sm:group-hover:translate-x-2 transition-all duration-500 ease-out"></i>
               </span>
             </a>
           </div>
 
-          <!-- Social Links with Professional Spacing -->
-          <div class="flex md:justify-start justify-center items-center space-x-5 social-links">
-            <span class="text-sm font-medium text-text-secondary mr-2">Follow me:</span>
-            <a href="https://instagram.com/gd_tardie" class="social-icon" target="_blank">
-              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-primary/20 hover:border-primary/50 transition-colors shadow-md">
-                <i class="fab fa-instagram text-text-secondary hover:text-primary transition-colors"></i>
+          <!-- Social Links with Enhanced Interactive Effects - Responsive for All Devices -->
+          <div class="flex md:justify-start justify-center items-center space-x-3 xs:space-x-4 sm:space-x-5 social-links">
+            <span class="text-xs xs:text-sm sm:text-sm font-medium text-text-secondary mr-1 xs:mr-1.5 sm:mr-2">Follow me:</span>
+            <a href="https://www.instagram.com/krish.design.np/" class="social-icon group" target="_blank">
+              <div class="relative w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:scale-110 group-hover:shadow-glow-primary overflow-hidden">
+                <!-- Animated background glow -->
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Animated border effect -->
+                <div class="absolute inset-0 border border-primary/20 rounded-full group-hover:border-primary/60 transition-colors duration-500"></div>
+                <!-- Animated ripple effect -->
+                <div class="absolute inset-0 scale-0 rounded-full border border-primary/40 group-hover:scale-150 group-hover:opacity-0 transition-all duration-1000"></div>
+                <!-- Icon with enhanced animation -->
+                <i class="fab fa-instagram text-text-secondary group-hover:text-primary transition-all duration-500 relative z-10 text-sm xs:text-base sm:text-lg group-hover:text-base xs:group-hover:text-lg sm:group-hover:text-xl"></i>
               </div>
             </a>
-            <a href="#" class="social-icon">
-              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-secondary/20 hover:border-secondary/50 transition-colors shadow-md">
-                <i class="fab fa-behance text-text-secondary hover:text-secondary transition-colors"></i>
+            <a href="https://www.behance.net/krishdesign" class="social-icon group" target="_blank">
+              <div class="relative w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:scale-110 group-hover:shadow-glow-secondary overflow-hidden">
+                <!-- Animated background glow -->
+                <div class="absolute inset-0 bg-gradient-to-r from-secondary/20 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Animated border effect -->
+                <div class="absolute inset-0 border border-secondary/20 rounded-full group-hover:border-secondary/60 transition-colors duration-500"></div>
+                <!-- Animated ripple effect -->
+                <div class="absolute inset-0 scale-0 rounded-full border border-secondary/40 group-hover:scale-150 group-hover:opacity-0 transition-all duration-1000"></div>
+                <!-- Icon with enhanced animation -->
+                <i class="fab fa-behance text-text-secondary group-hover:text-secondary transition-all duration-500 relative z-10 text-sm xs:text-base sm:text-lg group-hover:text-base xs:group-hover:text-lg sm:group-hover:text-xl"></i>
               </div>
             </a>
-            <a href="#" class="social-icon">
-              <div class="w-10 h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center border border-accent/20 hover:border-accent/50 transition-colors shadow-md">
-                <i class="fab fa-youtube text-text-secondary hover:text-accent transition-colors"></i>
+            <a href="https://www.youtube.com/@krishdesign" class="social-icon group" target="_blank">
+              <div class="relative w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-full bg-bg-secondary/40 backdrop-blur-md flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:scale-110 group-hover:shadow-glow-accent overflow-hidden">
+                <!-- Animated background glow -->
+                <div class="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Animated border effect -->
+                <div class="absolute inset-0 border border-accent/20 rounded-full group-hover:border-accent/60 transition-colors duration-500"></div>
+                <!-- Animated ripple effect -->
+                <div class="absolute inset-0 scale-0 rounded-full border border-accent/40 group-hover:scale-150 group-hover:opacity-0 transition-all duration-1000"></div>
+                <!-- Icon with enhanced animation -->
+                <i class="fab fa-youtube text-text-secondary group-hover:text-accent transition-all duration-500 relative z-10 text-sm xs:text-base sm:text-lg group-hover:text-base xs:group-hover:text-lg sm:group-hover:text-xl"></i>
               </div>
             </a>
           </div>
         </div>
 
-        <!-- Right Content Column - Skill Showcase -->
+        <!-- Right Content Column - Modern Floating Grid Skills Showcase -->
         <div class="md:col-span-5 relative skill-showcase hidden md:block">
-          <!-- Professional Card Container -->
-          <div class="relative bg-bg-secondary/30 backdrop-blur-md rounded-2xl p-6 border border-border-color shadow-xl overflow-hidden">
-            <!-- Glowing background effect -->
-            <div class="absolute -inset-2 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-3xl blur-xl opacity-50"></div>
+          <!-- Floating Grid Skills Container -->
+          <div class="relative h-96 w-full overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 bg-gradient-to-br from-bg-secondary/5 to-bg-secondary/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden">
+              <!-- Animated background elements -->
+              <div class="absolute w-40 h-40 rounded-full bg-primary/5 blur-3xl -top-10 -left-10 animate-pulse-slow"></div>
+              <div class="absolute w-40 h-40 rounded-full bg-secondary/5 blur-3xl -bottom-10 -right-10 animate-pulse-slow-reverse"></div>
+              <div class="absolute w-full h-px top-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+              <div class="absolute h-full w-px left-1/2 bg-gradient-to-b from-transparent via-secondary/20 to-transparent"></div>
+            </div>
 
-            <!-- Skill Cards Grid -->
-            <div class="relative z-10 grid grid-cols-2 gap-4">
-              <!-- Video Editing Card -->
-              <div class="col-span-2 bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-primary/20 hover:border-primary/40 transition-colors group skill-card">
-                <div class="flex items-start space-x-3">
-                  <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
-                    <i class="fas fa-video text-xl text-primary"></i>
-                  </div>
-                  <div>
-                    <h3 class="text-base font-display font-bold text-text-color mb-1">Video Editing</h3>
-                    <p class="text-text-secondary text-xs">Professional video editing and color grading</p>
+            <!-- Skills Grid Layout -->
+            <div class="absolute inset-0 p-6 grid grid-cols-12 grid-rows-12 gap-4 z-10">
+              <!-- Video Editing Card - Larger, spanning multiple grid cells -->
+              <div class="skill-card col-span-7 row-span-7 group" data-skill="video">
+                <div class="relative h-full w-full rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-glow-primary">
+                  <!-- Card Background with Gradient -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-bg-secondary/40 to-bg-secondary/20 backdrop-blur-md border border-primary/20 group-hover:border-primary/40 transition-colors duration-500"></div>
+
+                  <!-- Card Content -->
+                  <div class="relative h-full p-5 flex flex-col justify-between z-10">
+                    <!-- Icon with animated background -->
+                    <div class="skill-icon-container relative mb-auto">
+                      <div class="absolute inset-0 bg-primary/10 rounded-full blur-xl transform scale-150 opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+                      <div class="relative w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-all duration-500 transform group-hover:-translate-y-2">
+                        <i class="fas fa-video text-2xl text-primary"></i>
+                      </div>
+                    </div>
+
+                    <!-- Content with animated line -->
+                    <div class="mt-auto">
+                      <h3 class="text-2xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors duration-500">Video Editing</h3>
+                      <div class="w-0 h-0.5 bg-primary/50 group-hover:w-full transition-all duration-700 mb-3"></div>
+                      <p class="text-text-secondary text-sm">Professional video editing and color grading</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- UX/UI Design Card -->
-              <div class="bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-secondary/20 hover:border-secondary/40 transition-colors group skill-card">
-                <div class="flex flex-col h-full">
-                  <div class="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center mb-2 group-hover:bg-secondary/30 transition-colors">
-                    <i class="fas fa-desktop text-lg text-secondary"></i>
+              <div class="skill-card col-span-5 row-span-4 col-start-8 row-start-1 group" data-skill="ux">
+                <div class="relative h-full w-full rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-glow-secondary">
+                  <!-- Card Background with Gradient -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-bg-secondary/40 to-bg-secondary/20 backdrop-blur-md border border-secondary/20 group-hover:border-secondary/40 transition-colors duration-500"></div>
+
+                  <!-- Card Content -->
+                  <div class="relative h-full p-5 flex flex-col justify-between z-10">
+                    <!-- Icon with animated background -->
+                    <div class="skill-icon-container relative mb-auto">
+                      <div class="absolute inset-0 bg-secondary/10 rounded-full blur-xl transform scale-150 opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+                      <div class="relative w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center group-hover:bg-secondary/30 transition-all duration-500 transform group-hover:-translate-y-2">
+                        <i class="fas fa-desktop text-xl text-secondary"></i>
+                      </div>
+                    </div>
+
+                    <!-- Content with animated line -->
+                    <div class="mt-auto">
+                      <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-secondary transition-colors duration-500">UX/UI Design</h3>
+                      <div class="w-0 h-0.5 bg-secondary/50 group-hover:w-full transition-all duration-700 mb-3"></div>
+                      <p class="text-text-secondary text-xs">User-centered interfaces and experiences</p>
+                    </div>
                   </div>
-                  <h3 class="text-sm font-display font-bold text-text-color mb-1">UX/UI Design</h3>
-                  <p class="text-text-secondary text-xs">User-centered interfaces</p>
                 </div>
               </div>
 
               <!-- Graphic Design Card -->
-              <div class="bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors group skill-card">
-                <div class="flex flex-col h-full">
-                  <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center mb-2 group-hover:bg-accent/30 transition-colors">
-                    <i class="fas fa-palette text-lg text-accent"></i>
+              <div class="skill-card col-span-5 row-span-4 col-start-8 row-start-5 group" data-skill="graphic">
+                <div class="relative h-full w-full rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-glow-accent">
+                  <!-- Card Background with Gradient -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-bg-secondary/40 to-bg-secondary/20 backdrop-blur-md border border-accent/20 group-hover:border-accent/40 transition-colors duration-500"></div>
+
+                  <!-- Card Content -->
+                  <div class="relative h-full p-5 flex flex-col justify-between z-10">
+                    <!-- Icon with animated background -->
+                    <div class="skill-icon-container relative mb-auto">
+                      <div class="absolute inset-0 bg-accent/10 rounded-full blur-xl transform scale-150 opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+                      <div class="relative w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-all duration-500 transform group-hover:-translate-y-2">
+                        <i class="fas fa-palette text-xl text-accent"></i>
+                      </div>
+                    </div>
+
+                    <!-- Content with animated line -->
+                    <div class="mt-auto">
+                      <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-accent transition-colors duration-500">Graphic Design</h3>
+                      <div class="w-0 h-0.5 bg-accent/50 group-hover:w-full transition-all duration-700 mb-3"></div>
+                      <p class="text-text-secondary text-xs">Visual communication and brand identity</p>
+                    </div>
                   </div>
-                  <h3 class="text-sm font-display font-bold text-text-color mb-1">Graphic Design</h3>
-                  <p class="text-text-secondary text-xs">Visual communication</p>
                 </div>
               </div>
 
               <!-- Web Design Card -->
-              <div class="col-span-2 bg-bg-color/50 backdrop-blur-md p-4 rounded-xl border border-tertiary-color/20 hover:border-tertiary-color/40 transition-colors group skill-card">
-                <div class="flex items-start space-x-3">
-                  <div class="w-12 h-12 rounded-xl bg-tertiary-color/20 flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary-color/30 transition-colors">
-                    <i class="fas fa-code text-xl text-tertiary-color"></i>
-                  </div>
-                  <div>
-                    <h3 class="text-base font-display font-bold text-text-color mb-1">Web Design</h3>
-                    <p class="text-text-secondary text-xs">Modern, responsive websites with clean aesthetics</p>
+              <div class="skill-card col-span-7 row-span-5 col-start-1 row-start-8 group" data-skill="web">
+                <div class="relative h-full w-full rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-glow-tertiary">
+                  <!-- Card Background with Gradient -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-bg-secondary/40 to-bg-secondary/20 backdrop-blur-md border border-tertiary-color/20 group-hover:border-tertiary-color/40 transition-colors duration-500"></div>
+
+                  <!-- Card Content -->
+                  <div class="relative h-full p-5 flex flex-col justify-between z-10">
+                    <!-- Icon with animated background -->
+                    <div class="skill-icon-container relative mb-auto">
+                      <div class="absolute inset-0 bg-tertiary-color/10 rounded-full blur-xl transform scale-150 opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+                      <div class="relative w-14 h-14 rounded-xl bg-tertiary-color/20 flex items-center justify-center group-hover:bg-tertiary-color/30 transition-all duration-500 transform group-hover:-translate-y-2">
+                        <i class="fas fa-code text-xl text-tertiary-color"></i>
+                      </div>
+                    </div>
+
+                    <!-- Content with animated line -->
+                    <div class="mt-auto">
+                      <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-tertiary-color transition-colors duration-500">Web Design</h3>
+                      <div class="w-0 h-0.5 bg-tertiary-color/50 group-hover:w-full transition-all duration-700 mb-3"></div>
+                      <p class="text-text-secondary text-sm">Modern, responsive websites with clean aesthetics</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Decorative elements -->
-            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full border border-primary/30 flex items-center justify-center animate-spin-slow opacity-50">
-              <div class="w-14 h-14 rounded-full border border-secondary/30 flex items-center justify-center animate-spin-slow-reverse">
-                <div class="w-8 h-8 rounded-full border border-accent/30 animate-pulse"></div>
+              <!-- Decorative Element - Floating Badge -->
+              <div class="col-span-5 row-span-5 col-start-8 row-start-9 flex items-center justify-center">
+                <div class="relative w-24 h-24 rounded-full bg-bg-secondary/30 backdrop-blur-md flex items-center justify-center animate-float">
+                  <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-full blur-md opacity-50"></div>
+                  <div class="text-white/80 text-xs font-mono tracking-wider text-center">
+                    <div class="font-bold mb-1">2+</div>
+                    <div>YEARS</div>
+                    <div>EXPERIENCE</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Mobile Skill Icons (visible only on mobile) -->
-        <div class="md:hidden relative h-32 mb-8 skill-icons-container">
-          <!-- Video Editing Icon -->
-          <div class="absolute skill-icon video-icon">
-            <div class="w-16 h-16 rounded-2xl bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/30 shadow-lg">
-              <i class="fas fa-video text-2xl text-primary"></i>
-            </div>
-            <span class="block text-center text-sm mt-2 text-text-secondary">Video Editing</span>
+        <div class="md:hidden relative h-36 mb-8 skill-icons-container">
+          <!-- Mobile Skills Title -->
+          <div class="text-center mb-4">
+            <h3 class="text-lg font-display font-bold text-white">My Skills</h3>
+            <div class="w-16 h-0.5 bg-primary/50 mx-auto mt-1"></div>
           </div>
 
-          <!-- UX/UI Design Icon -->
-          <div class="absolute skill-icon ux-icon">
-            <div class="w-16 h-16 rounded-2xl bg-secondary/20 backdrop-blur-md flex items-center justify-center border border-secondary/30 shadow-lg">
-              <i class="fas fa-desktop text-2xl text-secondary"></i>
+          <!-- Mobile Skills Grid -->
+          <div class="grid grid-cols-4 gap-2 px-4">
+            <!-- Video Editing Icon -->
+            <div class="skill-icon video-icon flex flex-col items-center">
+              <div class="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 rounded-2xl bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/30 shadow-lg transform transition-all duration-500 hover:scale-110 hover:-translate-y-1 hover:shadow-glow-primary">
+                <i class="fas fa-video text-lg xs:text-xl sm:text-2xl text-primary"></i>
+              </div>
+              <span class="block text-center text-xs sm:text-sm mt-2 text-text-secondary">Video Editing</span>
             </div>
-            <span class="block text-center text-sm mt-2 text-text-secondary">UX/UI Design</span>
-          </div>
 
-          <!-- Graphic Design Icon -->
-          <div class="absolute skill-icon graphic-icon">
-            <div class="w-16 h-16 rounded-2xl bg-accent/20 backdrop-blur-md flex items-center justify-center border border-accent/30 shadow-lg">
-              <i class="fas fa-palette text-2xl text-accent"></i>
+            <!-- UX/UI Design Icon -->
+            <div class="skill-icon ux-icon flex flex-col items-center">
+              <div class="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 rounded-2xl bg-secondary/20 backdrop-blur-md flex items-center justify-center border border-secondary/30 shadow-lg transform transition-all duration-500 hover:scale-110 hover:-translate-y-1 hover:shadow-glow-secondary">
+                <i class="fas fa-desktop text-lg xs:text-xl sm:text-2xl text-secondary"></i>
+              </div>
+              <span class="block text-center text-xs sm:text-sm mt-2 text-text-secondary">UX/UI Design</span>
             </div>
-            <span class="block text-center text-sm mt-2 text-text-secondary">Graphic Design</span>
-          </div>
 
-          <!-- Web Design Icon -->
-          <div class="absolute skill-icon web-icon">
-            <div class="w-16 h-16 rounded-2xl bg-tertiary-color/20 backdrop-blur-md flex items-center justify-center border border-tertiary-color/30 shadow-lg">
-              <i class="fas fa-code text-2xl text-tertiary-color"></i>
+            <!-- Graphic Design Icon -->
+            <div class="skill-icon graphic-icon flex flex-col items-center">
+              <div class="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 rounded-2xl bg-accent/20 backdrop-blur-md flex items-center justify-center border border-accent/30 shadow-lg transform transition-all duration-500 hover:scale-110 hover:-translate-y-1 hover:shadow-glow-accent">
+                <i class="fas fa-palette text-lg xs:text-xl sm:text-2xl text-accent"></i>
+              </div>
+              <span class="block text-center text-xs sm:text-sm mt-2 text-text-secondary">Graphic Design</span>
             </div>
-            <span class="block text-center text-sm mt-2 text-text-secondary">Web Design</span>
+
+            <!-- Web Design Icon -->
+            <div class="skill-icon web-icon flex flex-col items-center">
+              <div class="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 rounded-2xl bg-tertiary-color/20 backdrop-blur-md flex items-center justify-center border border-tertiary-color/30 shadow-lg transform transition-all duration-500 hover:scale-110 hover:-translate-y-1 hover:shadow-glow-tertiary">
+                <i class="fas fa-code text-lg xs:text-xl sm:text-2xl text-tertiary-color"></i>
+              </div>
+              <span class="block text-center text-xs sm:text-sm mt-2 text-text-secondary">Web Design</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 scroll-indicator">
-      <div class="w-8 h-12 rounded-full border-2 border-text-secondary flex items-center justify-center">
-        <div class="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+    <!-- Scroll Indicator - Responsive for All Devices -->
+    <div class="absolute bottom-4 xs:bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 scroll-indicator hidden xs:block">
+      <div class="w-6 xs:w-7 sm:w-8 h-9 xs:h-10 sm:h-12 rounded-full border border-text-secondary/70 xs:border-2 flex items-center justify-center">
+        <div class="w-1.5 xs:w-1.5 sm:w-2 h-1.5 xs:h-1.5 sm:h-2 bg-primary rounded-full animate-bounce"></div>
       </div>
-      <span class="block text-center text-sm mt-2 text-text-secondary">Scroll Down</span>
+      <span class="block text-center text-xs xs:text-xs sm:text-sm mt-1 xs:mt-1.5 sm:mt-2 text-text-secondary">Scroll Down</span>
     </div>
   </section>
 
   <!-- Three.js and GSAP Animation Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Modern Particle Skills Showcase
+      initParticleSkills();
+
+      // Function to initialize the particle skills showcase
+      function initParticleSkills() {
+        const skillsCanvas = document.getElementById('skills-particle-canvas');
+        if (!skillsCanvas) return;
+
+        // Initialize Three.js scene for particles
+        const skillsScene = new THREE.Scene();
+        const skillsCamera = new THREE.PerspectiveCamera(60, skillsCanvas.clientWidth / skillsCanvas.clientHeight, 0.1, 1000);
+        const skillsRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+        skillsRenderer.setSize(skillsCanvas.clientWidth, skillsCanvas.clientHeight);
+        skillsRenderer.setPixelRatio(window.devicePixelRatio);
+        skillsCanvas.appendChild(skillsRenderer.domElement);
+
+        // Camera position
+        skillsCamera.position.z = 5;
+
+        // Skill colors
+        const skillColors = {
+          video: 0x60a5fa,     // primary
+          ux: 0xa78bfa,        // secondary
+          graphic: 0xfbbf24,   // accent
+          web: 0x34d399        // tertiary
+        };
+
+        // Create particle systems for each skill
+        const particleSystems = {};
+        const particleCount = 100; // Number of particles per skill
+
+        // Create particle geometry that will be shared by all systems
+        const particleGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+
+        // Randomize initial positions in a sphere
+        for (let i = 0; i < particleCount; i++) {
+          const i3 = i * 3;
+          positions[i3] = (Math.random() - 0.5) * 5;
+          positions[i3 + 1] = (Math.random() - 0.5) * 5;
+          positions[i3 + 2] = (Math.random() - 0.5) * 5 - 2; // Push back in z-space
+        }
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        // Create particle systems for each skill
+        Object.keys(skillColors).forEach(skill => {
+          // Create material with skill color
+          const particleMaterial = new THREE.PointsMaterial({
+            color: skillColors[skill],
+            size: 0.1,
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.AdditiveBlending,
+            sizeAttenuation: true
+          });
+
+          // Create particle system
+          const particles = new THREE.Points(particleGeometry.clone(), particleMaterial);
+          particles.visible = false; // Hide initially
+          skillsScene.add(particles);
+
+          // Store reference
+          particleSystems[skill] = {
+            particles,
+            originalPositions: [...positions], // Store original positions
+            targetPositions: [...positions],   // Will be updated on hover
+            velocities: new Float32Array(particleCount * 3).fill(0) // For physics simulation
+          };
+        });
+
+        // Show video particles by default
+        particleSystems.video.particles.visible = true;
+
+        // Handle skill card interactions
+        const skillCards = document.querySelectorAll('.skill-card');
+        let activeSkill = 'video'; // Default active skill
+
+        skillCards.forEach(card => {
+          const skill = card.getAttribute('data-skill');
+
+          // Mouse enter - show this skill's particles
+          card.addEventListener('mouseenter', () => {
+            // Hide all particle systems
+            Object.keys(particleSystems).forEach(s => {
+              if (s !== skill) {
+                // Fade out other systems
+                gsap.to(particleSystems[s].particles.material, {
+                  opacity: 0,
+                  duration: 0.5,
+                  onComplete: () => {
+                    particleSystems[s].particles.visible = false;
+                  }
+                });
+              }
+            });
+
+            // Show this skill's particles
+            particleSystems[skill].particles.visible = true;
+            particleSystems[skill].particles.material.opacity = 0;
+
+            // Animate in
+            gsap.to(particleSystems[skill].particles.material, {
+              opacity: 0.7,
+              duration: 0.5
+            });
+
+            // Explode particles outward
+            const positions = particleSystems[skill].particles.geometry.attributes.position.array;
+            for (let i = 0; i < particleCount; i++) {
+              const i3 = i * 3;
+
+              // Set target positions in an exploded state
+              particleSystems[skill].targetPositions[i3] = particleSystems[skill].originalPositions[i3] * 2;
+              particleSystems[skill].targetPositions[i3 + 1] = particleSystems[skill].originalPositions[i3 + 1] * 2;
+              particleSystems[skill].targetPositions[i3 + 2] = particleSystems[skill].originalPositions[i3 + 2] * 2;
+            }
+
+            // Update active skill
+            activeSkill = skill;
+          });
+
+          // Mouse leave - implode particles
+          card.addEventListener('mouseleave', () => {
+            // Return particles to original positions
+            const positions = particleSystems[skill].particles.geometry.attributes.position.array;
+            for (let i = 0; i < particleCount; i++) {
+              const i3 = i * 3;
+
+              // Set target positions back to original
+              particleSystems[skill].targetPositions[i3] = particleSystems[skill].originalPositions[i3];
+              particleSystems[skill].targetPositions[i3 + 1] = particleSystems[skill].originalPositions[i3 + 1];
+              particleSystems[skill].targetPositions[i3 + 2] = particleSystems[skill].originalPositions[i3 + 2];
+            }
+          });
+        });
+
+        // Animation loop
+        function animateParticles() {
+          requestAnimationFrame(animateParticles);
+
+          // Update all visible particle systems
+          Object.keys(particleSystems).forEach(skill => {
+            if (particleSystems[skill].particles.visible) {
+              const positions = particleSystems[skill].particles.geometry.attributes.position.array;
+              const targetPositions = particleSystems[skill].targetPositions;
+              const velocities = particleSystems[skill].velocities;
+
+              // Physics-based animation
+              for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+
+                // Calculate force towards target (spring physics)
+                const forceX = (targetPositions[i3] - positions[i3]) * 0.01;
+                const forceY = (targetPositions[i3 + 1] - positions[i3 + 1]) * 0.01;
+                const forceZ = (targetPositions[i3 + 2] - positions[i3 + 2]) * 0.01;
+
+                // Apply force to velocity (with damping)
+                velocities[i3] = velocities[i3] * 0.9 + forceX;
+                velocities[i3 + 1] = velocities[i3 + 1] * 0.9 + forceY;
+                velocities[i3 + 2] = velocities[i3 + 2] * 0.9 + forceZ;
+
+                // Apply velocity to position
+                positions[i3] += velocities[i3];
+                positions[i3 + 1] += velocities[i3 + 1];
+                positions[i3 + 2] += velocities[i3 + 2];
+
+                // Add some random movement
+                if (skill === activeSkill) {
+                  positions[i3] += (Math.random() - 0.5) * 0.01;
+                  positions[i3 + 1] += (Math.random() - 0.5) * 0.01;
+                  positions[i3 + 2] += (Math.random() - 0.5) * 0.01;
+                }
+              }
+
+              // Rotate the entire particle system
+              particleSystems[skill].particles.rotation.y += 0.002;
+
+              // Update geometry
+              particleSystems[skill].particles.geometry.attributes.position.needsUpdate = true;
+            }
+          });
+
+          // Render scene
+          skillsRenderer.render(skillsScene, skillsCamera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          const width = skillsCanvas.clientWidth;
+          const height = skillsCanvas.clientHeight;
+
+          skillsCamera.aspect = width / height;
+          skillsCamera.updateProjectionMatrix();
+          skillsRenderer.setSize(width, height);
+        });
+
+        // Start animation
+        animateParticles();
+      }
       // Initialize Three.js scene
       const canvas = document.getElementById('hero-canvas');
       const scene = new THREE.Scene();

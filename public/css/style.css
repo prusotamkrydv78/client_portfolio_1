@@ -207,15 +207,160 @@ body { /* Hide the default cursor */
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Button hover effects */
+/* Modern Floating Grid Skills Showcase */
+.skill-card {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Glow effects for skill cards */
+.shadow-glow-primary {
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.3), 0 0 15px rgba(96, 165, 250, 0.2);
+}
+
+.shadow-glow-secondary {
+  box-shadow: 0 0 25px rgba(167, 139, 250, 0.3), 0 0 15px rgba(167, 139, 250, 0.2);
+}
+
+.shadow-glow-accent {
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.3), 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+.shadow-glow-tertiary {
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.3), 0 0 15px rgba(52, 211, 153, 0.2);
+}
+
+/* Grid layout animations */
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-rows-12 {
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+}
+
+/* Floating animation for badge */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Slow pulse animations for background elements */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-slow-reverse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-slow-reverse {
+  animation: pulse-slow-reverse 8s ease-in-out infinite;
+}
+
+/* Subtle parallax effect on hover */
+.skill-card:hover .skill-icon-container {
+  transform: translateZ(20px);
+}
+
+.skill-card:hover h3 {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Blur utilities */
+.blur-3xl {
+  --tw-blur: blur(64px);
+  filter: var(--tw-blur);
+}
+
+.blur-xl {
+  --tw-blur: blur(24px);
+  filter: var(--tw-blur);
+}
+
+.blur-md {
+  --tw-blur: blur(12px);
+  filter: var(--tw-blur);
+}
+
+/* Enhanced Button Hover Effects */
 .btn-primary {
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: var(--shadow-button);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.15);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+/* Button gradient animation utilities */
+.bg-size-200 {
+  background-size: 200% 100%;
+}
+
+.bg-pos-0 {
+  background-position: 0% 0%;
+}
+
+.bg-pos-100 {
+  background-position: 100% 0%;
+}
+
+/* Animated particles for buttons */
+.particle-1 {
+  top: 20%;
+  left: 10%;
+  animation: float-particle 3s infinite ease-in-out;
+}
+
+.particle-2 {
+  bottom: 20%;
+  right: 10%;
+  animation: float-particle 4s infinite ease-in-out;
+}
+
+.particle-3 {
+  top: 50%;
+  right: 20%;
+  animation: float-particle 5s infinite ease-in-out;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, -5px);
+  }
 }
 
 /* Portfolio item hover effects */
@@ -271,4 +416,275 @@ body { /* Hide the default cursor */
   --gradient-primary: linear-gradient(90deg, #2563eb, #8b5cf6);
   --gradient-secondary: linear-gradient(90deg, #8b5cf6, #f59e0b);
   --gradient-accent: linear-gradient(90deg, #f59e0b, #10b981);
+}
+
+/* Comprehensive Responsive Styles */
+
+/* Ensure hero badge is always visible */
+.hero-badge {
+  position: relative;
+  z-index: 30;
+  background-color: rgba(30, 30, 60, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse animation for the badge dot */
+.pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(96, 165, 250, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0);
+  }
+}
+
+/* Extra small devices - Smartwatches (< 320px) */
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-badge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero-badge-mobile {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero-buttons {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons a {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .social-links span {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icon div {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .skill-icons-container {
+    height: 10rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-icon div {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .skill-icon i {
+    font-size: 1rem;
+  }
+
+  .skill-icon span {
+    font-size: 0.7rem;
+  }
+
+  header {
+    padding: 0.5rem 0;
+  }
+
+  header a.text-2xl {
+    font-size: 1.25rem;
+  }
+
+  #mobile-menu-button {
+    padding: 0.25rem;
+  }
+
+  #mobile-menu {
+    top: 3.5rem;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+/* Small devices - Mobile phones (320px - 639px) */
+@media (min-width: 321px) and (max-width: 639px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge {
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-badge-mobile {
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    margin-top: 1rem;
+  }
+
+  .skill-icons-container {
+    height: 10rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .skill-icon div {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+/* Medium devices - Tablets (640px - 767px) */
+@media (min-width: 640px) and (max-width: 767px) {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .skill-icons-container {
+    height: 10rem;
+  }
+
+  .skill-icon div {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* Standard responsive styles (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .skill-showcase {
+    margin-top: 2rem;
+  }
+
+  .skill-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .skill-card p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile skill icons grid */
+@media (max-width: 768px) {
+  .skill-icons-container {
+    position: relative;
+    margin-top: 1.5rem;
+  }
+
+  /* Mobile hero badge styling */
+  .hero-badge-mobile {
+    position: relative;
+    z-index: 30;
+    background-color: rgba(30, 30, 60, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Large devices - Desktops (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .skill-card .skill-icon-container div {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* Extra large devices - Large desktops (1280px and up) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .skill-showcase {
+    transform: scale(1.05);
+  }
 }
